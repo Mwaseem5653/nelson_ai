@@ -1,0 +1,26 @@
+cd /Nelson-WA-Order/Nelson-Order-Management-/backend
+source venv/bin/activate
+uvicorn server:app --host 0.0.0.0 --port 9001 --reload
+
+for whatsapp 
+cd /Nelson-WA-Order/Nelson-Order-Management-/wa-bridge
+for installation 
+sudo apt install 
+for run 
+npm start
+
+
+cd ~/Nelson-Order-Management-/wa-bridge
+
+# Remove old directory
+rm -rf auth_info_baileys
+
+# Create it with proper permissions
+mkdir -p auth_info_baileys
+touch auth_info_baileys/.gitkeep
+
+# Set ownership to current user
+sudo chown -R $(whoami):$(whoami) .
+
+# Now start
+npm start

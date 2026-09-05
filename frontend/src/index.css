@@ -1,0 +1,110 @@
+@import "@fontsource/chivo/400.css";
+@import "@fontsource/chivo/600.css";
+@import "@fontsource/chivo/700.css";
+@import "@fontsource/chivo/900.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222 20% 12%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 20% 12%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 20% 12%;
+        --primary: 222 100% 50%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 220 14% 96%;
+        --secondary-foreground: 222 20% 12%;
+        --muted: 220 14% 96%;
+        --muted-foreground: 222 10% 46%;
+        --accent: 220 14% 96%;
+        --accent-foreground: 222 20% 12%;
+        --destructive: 0 78% 52%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 222 100% 50%;
+        --radius: 0.25rem;
+        --sidebar-bg: 222 20% 12%;
+        --sidebar-fg: 0 0% 98%;
+    }
+    .dark {
+        --background: 222 15% 6%;
+        --foreground: 0 0% 96%;
+        --card: 222 15% 8%;
+        --card-foreground: 0 0% 96%;
+        --popover: 222 15% 8%;
+        --popover-foreground: 0 0% 96%;
+        --primary: 222 100% 60%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 222 15% 12%;
+        --secondary-foreground: 0 0% 96%;
+        --muted: 222 15% 12%;
+        --muted-foreground: 222 10% 62%;
+        --accent: 222 15% 14%;
+        --accent-foreground: 0 0% 96%;
+        --destructive: 0 78% 52%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 222 15% 16%;
+        --input: 222 15% 16%;
+        --ring: 222 100% 60%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html,
+    body,
+    #root {
+        height: 100%;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Chivo", system-ui, sans-serif;
+        letter-spacing: -0.01em;
+    }
+    ::selection {
+        background: #0055ff;
+        color: white;
+    }
+}
+
+@layer utilities {
+    .label-cap {
+        @apply text-[11px] uppercase tracking-[0.08em] font-semibold text-muted-foreground;
+    }
+    .card-flat {
+        @apply bg-card border border-border rounded-md;
+    }
+    .grid-lines-bg {
+        background-image:
+            linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}

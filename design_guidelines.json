@@ -1,0 +1,120 @@
+{
+  "theme_archetype": "Archetype 4 (Swiss & High-Contrast) - Modified for Elite ERP",
+  "design_philosophy": "A high-density, authoritative dashboard. Instead of floating generic cards, use structural grid lines and tight spacing. The UI should feel like a high-end precision tool (like a Bloomberg terminal or aviation software), not a generic SaaS. Optimize for readability, data scanning, and high contrast.",
+  "typography": {
+    "font_families": {
+      "headings": "Manrope",
+      "body": "IBM Plex Sans",
+      "mono": "JetBrains Mono"
+    },
+    "hierarchy": {
+      "h1": "text-2xl sm:text-3xl font-black tracking-tight",
+      "h2": "text-xl sm:text-2xl font-bold tracking-tight",
+      "h3": "text-lg font-bold",
+      "body": "text-sm leading-relaxed",
+      "labels_overlines": "text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground",
+      "data_tables": "text-[13px] leading-tight"
+    },
+    "rules": [
+      "No Inter for headings. Use Manrope to add technical yet accessible character.",
+      "IBM Plex Sans for all body and table text to ensure perfect number alignment and legibility.",
+      "Use tabular-nums class for all data columns.",
+      "Do not default to bold for headers; use radical weight contrast (e.g., Black vs Regular)."
+    ]
+  },
+  "colors": {
+    "light_mode": {
+      "background": "#FAFAFA",
+      "foreground": "#0A0A0A",
+      "card": "#FFFFFF",
+      "card_foreground": "#0A0A0A",
+      "primary": "#0047FF",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#F0F0F0",
+      "muted": "#F0F0F0",
+      "border": "#E5E5E5",
+      "accent": "#F5F5F5",
+      "destructive": "#FF3B30"
+    },
+    "dark_mode": {
+      "background": "#050505",
+      "foreground": "#FAFAFA",
+      "card": "#0A0A0A",
+      "card_foreground": "#FAFAFA",
+      "primary": "#3366FF",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#1A1A1A",
+      "muted": "#1A1A1A",
+      "border": "#1A1A1A",
+      "accent": "#1A1A1A",
+      "destructive": "#FF453A"
+    },
+    "rules": [
+      "Pure Black/Void Black for Dark Mode backgrounds to increase contrast.",
+      "Primary color (Cobalt Blue) is used STRICTLY for primary CTAs and active states.",
+      "Never use Teal or Space Grotesk.",
+      "Never use pure transparent backgrounds for headers or overlays."
+    ]
+  },
+  "layouts": {
+    "shell": "Full-height left sidebar (260px) + Main Content Area. Mobile-first responsive using a hamburger menu for smaller screens.",
+    "dashboard_grid": "High Density Grid. Base: grid-cols-1 md:grid-cols-3 lg:grid-cols-4. Tight gaps (gap-4 or gap-6).",
+    "pages": "Table-first surfaces. CRUD pages should not bury data inside padded cards. Use edge-to-edge tables within the main content container.",
+    "rules": [
+      "Max 8px border-radius globally for interactive elements, 0px for structural containers.",
+      "Ensure optical alignment. Form labels and inputs left-aligned.",
+      "Use 'Grid Borders' look: subtle 1px borders separating sections instead of heavy drop shadows."
+    ]
+  },
+  "visual_enhancers": {
+    "surfaces": "Grid Borders (The 'Technical' Look). Instead of floating boxes with drop shadows, use 1px solid borders (border-border) to define zones.",
+    "super_admin_switcher": "The Super Admin Company Dropdown MUST be the most distinct interactive element in the sidebar. Apply the 'Glassmorphism (Crystal)' styling to its container: backdrop-blur-xl, bg-white/70 (light) or bg-black/60 (dark), 1px delicate inner stroke, and a subtle drop shadow to signify authority and global control. If standard user, render as a flat, unclickable text badge.",
+    "login_screen": "Split screen layout. Right side: Login form (white/black solid). Left side: Full bleed architectural abstract image with a soft gradient overlay."
+  },
+  "components": {
+    "tables": "Shadcn Table heavily customized. Very dense (py-2 px-3). Remove outer borders, keep row bottom borders. Hover state: slight tint background.",
+    "modals_forms": "Use Shadcn 'Sheet' (Slide-over) for all major Create/Edit forms (User, Product, Employee, etc.). Only use center Dialogs for quick confirmations (e.g., Delete).",
+    "dropdowns": "Shadcn Dropdown Menu or Select. Must have solid background (bg-card), border, and shadow. No transparent dropdowns.",
+    "buttons": "Sharp or max 8px radius. Active hover states must lighten/darken clearly.",
+    "badges": "Use sharp rectangular badges for Roles and Statuses (e.g., Active/Inactive)."
+  },
+  "motion": {
+    "transitions": "Specific property transitions only (e.g., transition: transform 0.2s ease, opacity 0.2s ease). NEVER use transition-all.",
+    "hover_states": "All interactive rows and buttons must have distinct hover states with increased contrast.",
+    "entrance": "Staggered fade-up for list/table rows on page load (framer-motion or simple CSS animation)."
+  },
+  "accessibility": {
+    "contrast": "APCA contrast optimized. Text over gradients/images needs text-shadow or solid background.",
+    "testing": "All interactive elements MUST include data-testid. Example: data-testid='super-admin-company-select', data-testid='submit-login-button'."
+  },
+  "media_and_icons": {
+    "icon_library": "@phosphor-icons/react (Duotone style for premium feel) or lucide-react if strictly preferred. Ensure consistent sizing.",
+    "image_urls": {
+      "login_background": {
+        "url": "https://images.unsplash.com/photo-1483366774565-c783b9f70e2c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwZ2VvbWV0cmljJTIwYXJjaGl0ZWN0dXJlJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzg1OTA2MzU1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Minimalist geometric architecture. Use as the massive left-side hero image on the Login page to signify scale, structure, and enterprise stability.",
+        "category": "Login Page"
+      }
+    }
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Prioritize using pre-existing components from src/components/ui.",
+    "Create a toggle for Light/Dark theme. Default to Light theme for ERP functionality.",
+    "Use 'sonner' for toast notifications (located in /app/src/components/ui/sonner.tsx or install if missing).",
+    "DO NOT apply universal transitions (e.g., transition: all). Add transitions for specific interactive elements excluding transforms.",
+    "DO NOT center align the app container (.App { text-align: center; }).",
+    "Never use AI assistant Emoji characters (🤖🧠💡) for icons.",
+    "Implement the 'Company Context' securely in the Session State and automatically attach it to all form submits.",
+    "For the 10 CRUD profile pages, use a consistent Table + Sheet pattern. Do not build 10 different layout styles. Create a reusable generic Table layout component if possible.",
+    "Use 2-3x more spacing (padding/margin) on structural elements than you think is necessary, but keep table data dense."
+  ],
+  "instructions_to_main_agent": [
+    "1. Setup Tailwind config with the provided color variables (Light/Dark).",
+    "2. Setup routing for Login, Dashboard, and the 10 Setup/Profile pages.",
+    "3. Build the Auth/Session Context Provider. The user object MUST contain role and company_id.",
+    "4. Build the Left Sidebar containing navigation and the prominent Super Admin Company Switcher.",
+    "5. Build a reusable CRUD layout template (Table + Slide-over Form).",
+    "6. Implement the 10 profiles using this layout.",
+    "7. Ensure data-testid attributes are present on every button, input, and row action."
+  ]
+}
